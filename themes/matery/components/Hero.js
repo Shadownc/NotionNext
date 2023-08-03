@@ -53,11 +53,11 @@ const Hero = props => {
 
             <div className="text-white absolute flex flex-col h-full items-center justify-center w-full ">
                 {/* 站点标题 */}
-                <div className='text-4xl md:text-5xl shadow-text'>{siteInfo?.title}</div>
+                {/* <div className='text-4xl md:text-5xl shadow-text'>{siteInfo?.title}</div> */}
                 {/* 站点欢迎语 */}
-                <div className='mt-2 h-12 items-center text-center shadow-text text-white text-lg'>
+                {/* <div className='mt-2 h-12 items-center text-center shadow-text text-white text-lg'>
                     <span id='typed' />
-                </div>
+                </div> */}
                 {/* 滚动按钮 */}
                 <div onClick={() => { window.scrollTo({ top: wrapperTop, behavior: 'smooth' }) }}
                     className="mt-12 border cursor-pointer w-40 text-center pt-4 pb-3 text-md text-white hover:bg-orange-600 duration-300 rounded-3xl z-40">
