@@ -119,7 +119,7 @@ const CommonScript = () => {
     {/* tawk聊天 */}
     {BLOG.TAWK_ID && (<>
       <script async dangerouslySetInnerHTML={{
-          __html: `
+        __html: `
           var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
           (function(){
           var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -130,7 +130,7 @@ const CommonScript = () => {
           s0.parentNode.insertBefore(s1,s0);
           })();
         `
-        }}/>
+      }} />
     </>)}  
 
     {/* 引入音乐播放 */}
