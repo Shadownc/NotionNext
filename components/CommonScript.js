@@ -116,6 +116,23 @@ const CommonScript = () => {
       />
     </>)}
 
+    {/* tawk聊天 */}
+    {BLOG.TAWK_ID && (<>
+      <script async dangerouslySetInnerHTML={{
+          __html: `
+          var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+          (function(){
+          var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+          s1.async=true;
+          s1.src='https://embed.tawk.to/${BLOG.TAWK_ID}';
+          s1.charset='UTF-8';
+          s1.setAttribute('crossorigin','*');
+          s0.parentNode.insertBefore(s1,s0);
+          })();
+        `
+        }}/>
+    </>)}  
+
     {/* 引入音乐播放 */}
     {JSON.parse(BLOG.MUSIC_PLAYER) && <script async src={BLOG.MUSIC_PLAYER_CDN_URL} />}
     {JSON.parse(BLOG.MUSIC_PLAYER) && JSON.parse(BLOG.MUSIC_PLAYER_METING) && <script async src="https://cdnjs.cloudflare.com/ajax/libs/meting/2.0.1/Meting.min.js" />}
