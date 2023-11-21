@@ -16,7 +16,7 @@ const Hero = props => {
   const [typed, changeType] = useState()
   const { siteInfo } = props
   const { locale } = useGlobal()
-  const GREETING_WORDS = siteConfig('GREETING_WORDS').split(',')
+  const GREETING_WORDS = siteConfig('GREETING_WORDS')?.split(',')
 
   useEffect(() => {
     updateHeaderHeight()
@@ -54,7 +54,7 @@ const Hero = props => {
 
             <div className="text-white absolute flex flex-col h-full items-center justify-center w-full ">
                 {/* 站点标题 */}
-                <div className='text-4xl md:text-5xl shadow-text'>{siteConfig('TITLE')}</div>
+                {/* <div className='text-4xl md:text-5xl shadow-text'>{siteConfig('TITLE')}</div> */}
                 {/* 站点欢迎语 */}
                 {/* <div className='mt-2 h-12 items-center text-center shadow-text text-white text-lg'>
                     <span id='typed' />
