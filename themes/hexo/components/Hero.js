@@ -20,7 +20,7 @@ const Hero = props => {
   const scrollToWrapper = () => {
     window.scrollTo({ top: wrapperTop, behavior: 'smooth' })
   }
-  const GREETING_WORDS = siteConfig('GREETING_WORDS')?.split(',')
+  const GREETING_WORDS = siteConfig('GREETING_WORDS').split(',')
   useEffect(() => {
     updateHeaderHeight()
 
@@ -58,11 +58,11 @@ const Hero = props => {
 
             <div className="text-white absolute bottom-0 flex flex-col h-full items-center justify-center w-full ">
                 {/* 站点标题 */}
-                {/* <div className='font-black text-4xl md:text-5xl shadow-text'>{siteConfig('TITLE')}</div> */}
+                <div className='font-black text-4xl md:text-5xl shadow-text'>{siteConfig('TITLE')}</div>
                 {/* 站点欢迎语 */}
-                {/* <div className='mt-2 h-12 items-center text-center font-medium shadow-text text-lg'>
+                <div className='mt-2 h-12 items-center text-center font-medium shadow-text text-lg'>
                     <span id='typed' />
-                </div> */}
+                </div>
 
                 {/* 首页导航大按钮 */}
                 {siteConfig('HEXO_HOME_NAV_BUTTONS', null, CONFIG) && <NavButtonGroup {...props} />}
