@@ -21,11 +21,10 @@ const Hero = props => {
     window.scrollTo({ top: wrapperTop, behavior: 'smooth' })
   }
   const GREETING_WORDS = siteConfig('GREETING_WORDS')?.split(',') || []
-  if(!GREETING_WORDS.length) return
   useEffect(() => {
     updateHeaderHeight()
 
-    if (!typed && window && document.getElementById('typed')) {
+    if (!typed && window && document.getElementById('typed')&&GREETING_WORDS.length) {
       changeType(
         new Typed('#typed', {
           strings: GREETING_WORDS,
