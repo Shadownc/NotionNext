@@ -20,7 +20,8 @@ const Hero = props => {
   const scrollToWrapper = () => {
     window.scrollTo({ top: wrapperTop, behavior: 'smooth' })
   }
-  const GREETING_WORDS = siteConfig('GREETING_WORDS').split(',')
+  const GREETING_WORDS = siteConfig('GREETING_WORDS')?.split(',') || []
+  if(!GREETING_WORDS.length) return
   useEffect(() => {
     updateHeaderHeight()
 
