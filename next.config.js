@@ -18,12 +18,12 @@ function scanSubdirectories(directory) {
   fs.readdirSync(directory).forEach(file => {
     // 这段代码会将landing排除在可选主题中
 
-    // const fullPath = path.join(directory, file)
-    // const stats = fs.statSync(fullPath)
+    const fullPath = path.join(directory, file)
+    const stats = fs.statSync(fullPath)
     // landing主题默认隐藏掉，一般网站不会用到
-    // if (stats.isDirectory() && file !== 'landing') {
-    //   subdirectories.push(file)
-    // }
+    if (stats.isDirectory() && file !== 'landing') {
+      subdirectories.push(file)
+    }
   })
 
   return subdirectories
