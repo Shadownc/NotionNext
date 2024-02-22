@@ -8,7 +8,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 /**
- * 扫描指定目录下的文件夹名，用于获取当前有几个主题
+ * 扫描指定目录下的文件夹名，用于获取所有主题
  * @param {*} directory
  * @returns
  */
