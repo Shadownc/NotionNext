@@ -13,7 +13,7 @@ let wrapperTop = 0
  * 顶部全屏大图
  * @returns
  */
-const Hero = props => {
+const Hero = (props) => {
   const [typed, changeType] = useState()
   const { siteInfo } = props
   const { locale } = useGlobal()
@@ -25,11 +25,8 @@ const Hero = props => {
   useEffect(() => {
     updateHeaderHeight()
 
-    if (!typed && window && document.getElementById('typed')&&GREETING_WORDS.length) {
-      loadExternalResource(
-        'https://cdn.jsdelivr.net/npm/typed.js@2.0.12',
-        'js'
-      ).then(() => {
+    if (!typed && window && document.getElementById('typed') && GREETING_WORDS.length) {
+      loadExternalResource('Failed to resolve the requested file.js').then(() => {
         if (window.Typed) {
           changeType(
             new window.Typed('#typed', {
@@ -49,7 +46,7 @@ const Hero = props => {
     return () => {
       window.removeEventListener('resize', updateHeaderHeight)
     }
-  })
+  }, [typed, GREETING_WORDS])
 
   function updateHeaderHeight() {
     requestAnimationFrame(() => {
@@ -62,7 +59,8 @@ const Hero = props => {
     <header
       id='header'
       style={{ zIndex: 1 }}
-      className='w-full h-screen relative bg-black'>
+      className='w-full h-screen relative bg-black'
+    >
       <div className='text-white absolute bottom-0 flex flex-col h-full items-center justify-center w-full '>
         {/* 站点标题 */}
         <div className='font-black text-4xl md:text-5xl shadow-text'>
@@ -81,7 +79,8 @@ const Hero = props => {
         {/* 滚动按钮 */}
         <div
           onClick={scrollToWrapper}
-          className='z-10 cursor-pointer w-full text-center py-4 text-3xl absolute bottom-10 text-white'>
+          className='z-10 cursor-pointer w-full text-center py-4 text-3xl absolute bottom-10 text-white'
+        >
           <div className='opacity-70 animate-bounce text-xs'>
             {siteConfig('HEXO_SHOW_START_READING', null, CONFIG) &&
               locale.COMMON.START_READING}

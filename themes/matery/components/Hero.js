@@ -5,14 +5,15 @@ import { useGlobal } from '@/lib/global'
 import { loadExternalResource } from '@/lib/utils'
 import { useEffect, useState } from 'react'
 import CONFIG from '../config'
+import NavButtonGroup from './NavButtonGroup'
 
 let wrapperTop = 0
 
 /**
- *
- * @returns 头图
+ * 头图
+ * @returns
  */
-const Hero = props => {
+const Hero = (props) => {
   const [typed, changeType] = useState()
   const { siteInfo } = props
   const { locale } = useGlobal()
@@ -21,10 +22,7 @@ const Hero = props => {
   useEffect(() => {
     updateHeaderHeight()
     if (!typed && window && document.getElementById('typed')) {
-      loadExternalResource(
-        'https://cdn.jsdelivr.net/npm/typed.js@2.0.12',
-        'js'
-      ).then(() => {
+      loadExternalResource('Failed to resolve the requested file.js').then(() => {
         if (window.Typed) {
           changeType(
             new window.Typed('#typed', {
@@ -44,7 +42,7 @@ const Hero = props => {
     return () => {
       window.removeEventListener('resize', updateHeaderHeight)
     }
-  }, [])
+  }, [typed, GREETING_WORDS])
 
   function updateHeaderHeight() {
     requestAnimationFrame(() => {
@@ -57,10 +55,11 @@ const Hero = props => {
     <header
       id='header'
       style={{ zIndex: 1 }}
-      className=' w-full h-screen relative bg-black'>
+      className='w-full h-screen relative bg-black'
+    >
       <div className='text-white absolute flex flex-col h-full items-center justify-center w-full '>
         {/* 站点标题 */}
-         {/*<div className='text-4xl md:text-5xl shadow-text'>
+        {/*<div className='text-4xl md:text-5xl shadow-text'>
           {siteConfig('TITLE')}
         </div>*/}
         {/* 站点欢迎语 */}
@@ -72,7 +71,8 @@ const Hero = props => {
           onClick={() => {
             window.scrollTo({ top: wrapperTop, behavior: 'smooth' })
           }}
-          className='mt-12 border cursor-pointer w-40 text-center pt-4 pb-3 text-md text-white hover:bg-orange-600 duration-300 rounded-3xl z-40'>
+          className='mt-12 border cursor-pointer w-40 text-center pt-4 pb-3 text-md text-white hover:bg-orange-600 duration-300 rounded-3xl z-40'
+        >
           <i className='animate-bounce fas fa-angle-double-down' />{' '}
           <span>
             {siteConfig('MATERY_SHOW_START_READING', null, CONFIG) &&
