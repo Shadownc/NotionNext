@@ -46,7 +46,7 @@ function scanSubdirectories(directory) {
     const fullPath = path.join(directory, file)
     const stats = fs.statSync(fullPath)
     // landing主题默认隐藏掉，一般网站不会用到
-    if (stats.isDirectory() && file !== 'landing') {
+    if (stats.isDirectory() && file !== 'landing' && file!=='starter') {
       subdirectories.push(file)
     }
   })

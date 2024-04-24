@@ -16,7 +16,7 @@ const Hero = props => {
   const [typed, changeType] = useState()
   const { siteInfo } = props
   const { locale } = useGlobal()
-  const GREETING_WORDS = siteConfig('GREETING_WORDS').split(',')
+  const GREETING_WORDS = siteConfig('GREETING_WORDS')?.split(',')
 
   useEffect(() => {
     updateHeaderHeight()
