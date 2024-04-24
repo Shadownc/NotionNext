@@ -5,24 +5,26 @@ import { useGlobal } from '@/lib/global'
 import { loadExternalResource } from '@/lib/utils'
 import { useEffect, useState } from 'react'
 import CONFIG from '../config'
-import NavButtonGroup from './NavButtonGroup'
 
 let wrapperTop = 0
 
 /**
- * 头图
- * @returns
+ *
+ * @returns 头图
  */
-const Hero = (props) => {
+const Hero = props => {
   const [typed, changeType] = useState()
   const { siteInfo } = props
   const { locale } = useGlobal()
-  const GREETING_WORDS = siteConfig('GREETING_WORDS')?.split(',')
+  const GREETING_WORDS = siteConfig('GREETING_WORDS').split(',')
 
   useEffect(() => {
     updateHeaderHeight()
     if (!typed && window && document.getElementById('typed')) {
-      loadExternalResource('Failed to resolve the requested file.js').then(() => {
+      loadExternalResource(
+        'https://cdn.jsdelivr.net/npm/typed.js@2.0.12',
+        'js'
+      ).then(() => {
         if (window.Typed) {
           changeType(
             new window.Typed('#typed', {
@@ -42,7 +44,7 @@ const Hero = (props) => {
     return () => {
       window.removeEventListener('resize', updateHeaderHeight)
     }
-  }, [typed, GREETING_WORDS])
+  }, [])
 
   function updateHeaderHeight() {
     requestAnimationFrame(() => {
@@ -71,8 +73,7 @@ const Hero = (props) => {
           onClick={() => {
             window.scrollTo({ top: wrapperTop, behavior: 'smooth' })
           }}
-          className='mt-12 border cursor-pointer w-40 text-center pt-4 pb-3 text-md text-white hover:bg-orange-600 duration-300 rounded-3xl z-40'
-        >
+          className='mt-12 border cursor-pointer w-40 text-center pt-4 pb-3 text-md text-white hover:bg-orange-600 duration-300 rounded-3xl z-40'>
           <i className='animate-bounce fas fa-angle-double-down' />{' '}
           <span>
             {siteConfig('MATERY_SHOW_START_READING', null, CONFIG) &&

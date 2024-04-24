@@ -13,7 +13,7 @@ let wrapperTop = 0
  * 顶部全屏大图
  * @returns
  */
-const Hero = (props) => {
+const Hero = props => {
   const [typed, changeType] = useState()
   const { siteInfo } = props
   const { locale } = useGlobal()
@@ -46,7 +46,7 @@ const Hero = (props) => {
     return () => {
       window.removeEventListener('resize', updateHeaderHeight)
     }
-  }, [typed, GREETING_WORDS])
+  })
 
   function updateHeaderHeight() {
     requestAnimationFrame(() => {
@@ -79,8 +79,7 @@ const Hero = (props) => {
         {/* 滚动按钮 */}
         <div
           onClick={scrollToWrapper}
-          className='z-10 cursor-pointer w-full text-center py-4 text-3xl absolute bottom-10 text-white'
-        >
+          className='z-10 cursor-pointer w-full text-center py-4 text-3xl absolute bottom-10 text-white'>
           <div className='opacity-70 animate-bounce text-xs'>
             {siteConfig('HEXO_SHOW_START_READING', null, CONFIG) &&
               locale.COMMON.START_READING}
