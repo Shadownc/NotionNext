@@ -9,7 +9,8 @@ import CONFIG from '../config'
 let wrapperTop = 0
 
 /**
- *
+ * 首页英雄区
+ * 是一张大图，带个居中按钮
  * @returns 头图
  */
 const Hero = props => {

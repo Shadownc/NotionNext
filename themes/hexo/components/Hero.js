@@ -25,8 +25,11 @@ const Hero = props => {
   useEffect(() => {
     updateHeaderHeight()
 
-    if (!typed && window && document.getElementById('typed') && GREETING_WORDS.length) {
-      loadExternalResource('Failed to resolve the requested file.js').then(() => {
+    if (!typed && window && document.getElementById('typed')&&GREETING_WORDS.length) {
+      loadExternalResource(
+        'https://cdn.jsdelivr.net/npm/typed.js@2.0.12',
+        'js'
+      ).then(() => {
         if (window.Typed) {
           changeType(
             new window.Typed('#typed', {
