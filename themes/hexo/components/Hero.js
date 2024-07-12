@@ -25,11 +25,8 @@ const Hero = props => {
   useEffect(() => {
     updateHeaderHeight()
 
-    if (!typed && window && document.getElementById('typed')&&GREETING_WORDS.length) {
-      loadExternalResource(
-        'https://cdn.bootcdn.net/ajax/libs/typed.js/2.0.12/typed.min.js',
-        'js'
-      ).then(() => {
+    if (!typed && window && document.getElementById('typed') && GREETING_WORDS.length) {
+      loadExternalResource('/js/typed.min.js', 'js').then(() => {
         if (window.Typed) {
           changeType(
             new window.Typed('#typed', {
