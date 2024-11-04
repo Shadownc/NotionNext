@@ -1,5 +1,5 @@
+import { BeiAnGongAn } from '@/components/BeiAnGongAn'
 import DarkModeButton from '@/components/DarkModeButton'
-import { GongAnBeiAn } from '@/components/GongAnBeiAn'
 import { siteConfig } from '@/lib/config'
 /**
  * 页脚
