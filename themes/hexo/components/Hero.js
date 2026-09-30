@@ -3,7 +3,7 @@ import LazyImage from '@/components/LazyImage'
 import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
 import { loadExternalResource } from '@/lib/utils'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import CONFIG from '../config'
 import NavButtonGroup from './NavButtonGroup'
 
@@ -14,7 +14,6 @@ let wrapperTop = 0
  * @returns
  */
 const Hero = props => {
-  const [typed, changeType] = useState()
   const { siteInfo } = props
   const { locale } = useGlobal()
   const scrollToWrapper = () => {
@@ -26,6 +25,8 @@ const Hero = props => {
   const GREETING_WORDS_TYPE_SPEED = Number(siteConfig('GREETING_WORDS_TYPE_SPEED')) || 200
   const GREETING_WORDS_BACK_SPEED = Number(siteConfig('GREETING_WORDS_BACK_SPEED')) || 100
   useEffect(() => {
+    let disposed = false
+    let typedInstance
     updateHeaderHeight()
 
     if (!typed && window && document.getElementById('typed') && GREETING_WORDS.length) {
@@ -40,16 +41,18 @@ const Hero = props => {
               showCursor: true,
               smartBackspace: true
             })
-          )
-        }
-      })
+          }
+        })
+        .catch(() => {})
     }
 
     window.addEventListener('resize', updateHeaderHeight)
     return () => {
+      disposed = true
+      typedInstance?.destroy()
       window.removeEventListener('resize', updateHeaderHeight)
     }
-  })
+  }, [GREETING_WORDS, GREETING_WORDS_TYPE_SPEED, GREETING_WORDS_BACK_SPEED])
 
   function updateHeaderHeight() {
     requestAnimationFrame(() => {
@@ -82,8 +85,9 @@ const Hero = props => {
         {/* 滚动按钮 */}
         <div
           onClick={scrollToWrapper}
-          className='z-10 cursor-pointer w-full text-center py-4 text-3xl absolute bottom-10 text-white [text-shadow:0_0_0.1em_black,0_0_0.2em_black]'>
-          <div className='opacity-70 animate-bounce text-xs'> 
+          className='z-10 cursor-pointer w-full text-center py-4 text-3xl absolute bottom-10 text-white [text-shadow:0_0_0.1em_black,0_0_0.2em_black]'
+        >
+          <div className='opacity-70 animate-bounce text-xs'>
             {siteConfig('HEXO_SHOW_START_READING', null, CONFIG) &&
               locale.COMMON.START_READING}
           </div>
