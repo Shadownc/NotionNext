@@ -41,9 +41,11 @@ const Hero = props => {
               showCursor: true,
               smartBackspace: true
             })
-          }
-        })
-        .catch(() => {})
+          )
+        }
+
+      })
+        .catch(() => { })
     }
 
     window.addEventListener('resize', updateHeaderHeight)
