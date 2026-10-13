@@ -29,23 +29,20 @@ const Hero = props => {
     let typedInstance
     updateHeaderHeight()
 
-    if (!typed && window && document.getElementById('typed') && GREETING_WORDS.length) {
+    if (document.getElementById('typed') && GREETING_WORDS.length) {
       loadExternalResource('/js/typed.min.js', 'js').then(() => {
-        if (window.Typed) {
-          changeType(
-            new window.Typed('#typed', {
-              strings: GREETING_WORDS,
-              typeSpeed: GREETING_WORDS_TYPE_SPEED,
-              backSpeed: GREETING_WORDS_BACK_SPEED,
-              backDelay: 400,
-              showCursor: true,
-              smartBackspace: true
-            })
-          )
+        if (!disposed && window.Typed) {
+          typedInstance = new window.Typed('#typed', {
+            strings: GREETING_WORDS,
+            typeSpeed: GREETING_WORDS_TYPE_SPEED,
+            backSpeed: GREETING_WORDS_BACK_SPEED,
+            backDelay: 400,
+            showCursor: true,
+            smartBackspace: true
+          })
         }
-
       })
-        .catch(() => { })
+        .catch(() => {})
     }
 
     window.addEventListener('resize', updateHeaderHeight)
